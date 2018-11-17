@@ -1,0 +1,9 @@
+# Eclipse data
+.metadata/
+java/.classpath
+java/.project
+java/.settings/
+
+# Bin files => Just compile... + You have the JAR...
+java/bin/*
+

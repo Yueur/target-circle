@@ -16,3 +16,15 @@ Other:
 * The code must be easy to read for a non-tech
 * The code should be easy to update for future actions (like having 2 targets or 2 santas or even a custom list for each participants...)
 
+## Class from Library
+* List
+  * ArrayList
+* Map
+  * HashMap
+
+
+## Tests
+Should add a test to check syntax in the future...
+
+
+
