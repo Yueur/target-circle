@@ -11,7 +11,7 @@ import targetcircle.output.VisitorArrow;
 
 public class GiverTakerTest {
 	@Test
-	public void test_construct(){
+	public void test_version1(){
 		IOutVisitor visitor = new VisitorArrow();
 		GiverTaker<Participant, Participant> subject = new GiverTaker<Participant, Participant>();
 		

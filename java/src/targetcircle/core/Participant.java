@@ -16,4 +16,12 @@ public class Participant implements IElement {
 	public String accept(IOutVisitor visitor){
 		return name;
 	}
+
+	public int compareTo(Object obj) {
+		if(obj instanceof Participant){
+			Participant concrete = (Participant)obj;
+			return name.compareTo(concrete.name);
+		}
+		return 0;
+	}
 }

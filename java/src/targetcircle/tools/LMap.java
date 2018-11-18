@@ -1,13 +1,13 @@
 package targetcircle.tools;
 
 import java.util.Map;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class LMap<K,V> {
 	private Map<K,V> adapted;
 	
 	public LMap(){
-		adapted = new HashMap<K,V>();
+		adapted = new TreeMap<K,V>();
 	}
 	
 	public void clear(){
