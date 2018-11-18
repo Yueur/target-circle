@@ -20,11 +20,16 @@ Other:
 * List
   * ArrayList
 * Map
-  * HashMap
+  * TreeMap
 
 
 ## Tests
 Should add a test to check syntax in the future...
 
+## Execution
+Atm run the Java code (`Main.java`) in a console and copy/paste output in the `graphviz/files/test.dot` then run 
+* `graphviz/files/generate.sh` if you have graphviz installed
+* `graphviz/docker-generate.sh` if not (check image name...)
 
+Currently the loops are wrong (it couldbe a loop with less than 3 persons)...
 
