@@ -18,15 +18,15 @@ public class GiverTakerTest {
 		foo(visitor, subject, "");
 		
 		subject.setEntry(new Participant("1"), new Participant("2"));
-		foo(visitor, subject, "1 -> 2\n");
+		foo(visitor, subject, "1 -> 2;\n");
 
 		subject.setEntry(new Participant("2"), new Participant("1"));
-		foo(visitor, subject, "1 -> 2\n2 -> 1\n");
+		foo(visitor, subject, "1 -> 2;\n2 -> 1;\n");
 	}
 	
 	private void foo(IOutVisitor visitor, GiverTaker<Participant, Participant> subject, String expectation){
 		visitor.reset();
 		subject.visit(visitor);
-		assertEquals(visitor.toString(), expectation);
+		assertEquals(expectation, visitor.toString());
 	}
 }
