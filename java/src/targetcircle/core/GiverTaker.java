@@ -33,4 +33,12 @@ public class GiverTaker<K extends IElement,V extends IElement> {
 		}
 		content.put(key, value);
 	}
+	
+	public LList<K> keyList(){
+		return content.keyList();
+	}
+
+	public V get(K key){
+		return content.get(key);
+	}
 }
