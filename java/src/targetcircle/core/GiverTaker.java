@@ -41,4 +41,12 @@ public class GiverTaker<K extends IElement,V extends IElement> {
 	public V get(K key){
 		return content.get(key);
 	}
+	
+	public void clear(){
+		content.clear();
+	}
+	
+	public int size(){
+		return content.size();
+	}
 }

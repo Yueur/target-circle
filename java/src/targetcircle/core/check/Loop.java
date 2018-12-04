@@ -2,11 +2,23 @@ package targetcircle.core.check;
 
 import targetcircle.core.GiverTaker;
 import targetcircle.core.IElement;
+import targetcircle.tools.LException;
 import targetcircle.tools.LList;
 import targetcircle.tools.LRuntimeException;
+import targetcircle.tools.Random;
 
-public class Loop {
-	private int nb_default=2;
+public class Loop implements ICheck, IFix {
+	private int nb_default;
+	private int max_loop_for_fix;
+	
+	public Loop(){
+		this(2);
+	}
+	
+	public Loop(int nb){
+		nb_default = nb;
+		max_loop_for_fix = 20;
+	}
 	
 	/**
 	 * Checks if the ref is one of the n-th first element after him.
@@ -50,21 +62,25 @@ public class Loop {
 		return true;
 	}
 	
-	public GiverTaker<IElement, IElement> fix(GiverTaker<IElement, IElement> elem){
+	// ----------------------
+	
+	public GiverTaker<IElement, IElement> fix(GiverTaker<IElement, IElement> elem) throws LException{
 		return fix(elem, nb_default);
 	}
-	
+
+	public GiverTaker<IElement, IElement> fix(GiverTaker<IElement, IElement> elem, int nb) throws LException{
+		return fix(elem, nb, max_loop_for_fix);
+	}
 	
 	/**
-	 * Not done
-	 * 
-	 * @todo
+	 * Not quite done...
 	 * 
 	 * @param elem
 	 * @param nb
 	 * @return
+	 * @throws LException 
 	 */
-	public GiverTaker<IElement, IElement> fix(GiverTaker<IElement, IElement> elem, int nb){
+	public GiverTaker<IElement, IElement> fix(GiverTaker<IElement, IElement> elem, int nb, int max_loop) throws LException{
 		if(nb < 0 ){
 			throw new LRuntimeException("nb < 0");
 		}
@@ -87,8 +103,32 @@ public class Loop {
 		}
 		
 		// Resort rest
-		if(0 < target.size() && target.size() < nb){
+		if(0 < target.size()){
+			if(target.size() > nb){
+				throw new LException("Cannot fix this list");
+			}
+			// else
+			int i=0;
+			Random rnd = new Random();
+			GiverTaker<IElement, IElement> output_part = new GiverTaker<IElement, IElement>();
+			do{
+				if(i >= max_loop){
+					throw new LException("Cannot randomly fix this list");
+				}
+				i++;
+				
+				output_part.clear(); 
+				LList<IElement> new_target = rnd.getList(target);
+				
+				for(int j=0; j < target.size() ; j++){
+					output_part.setEntry(giver.get(j), new_target.get(j));
+				}
+			}while(!isValid(output_part, nb));
 			
+			giver = output_part.keyList();
+			for(int j=0 ; j<giver.size() ; j++){
+				output.setEntry(giver.get(j), output_part.get(giver.get(j)));
+			}
 		}
 		
 		return output;

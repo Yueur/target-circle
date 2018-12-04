@@ -22,6 +22,9 @@ Other:
 * Map
   * TreeMap
 
+* Exception
+  * Exception
+
 
 ## Tests
 Should add a test to check syntax in the future...

@@ -7,8 +7,8 @@
 
 ## Functions
 - [x] Basic random list
-- [ ] Random list without loop with 1 persons (give to yourself)
-- [ ] Random list without loop with 2 persons (give to your secret-santa)
+- [x] Random list without loop with 1 persons (give to yourself)
+- [x] Random list without loop with 2 persons (give to your secret-santa)
 
 
 ## Interface

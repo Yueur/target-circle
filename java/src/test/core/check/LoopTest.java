@@ -86,5 +86,9 @@ public class LoopTest {
 		assertEquals(subject.isValid(elem, 3), true);
 	}
 
+	//------
 
+	/**
+	 * @todo Test for the fixing part
+	 */
 }
